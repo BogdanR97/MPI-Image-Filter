@@ -1,0 +1,17 @@
+The program will take as input an .pnm or a .png type format image, and a series
+of filter-names, each of them being subsequently applied on the given picture.
+Each process spawned through MPI will have to work on a different part of the image, 
+so that the computing of the filtered image will be evenly ditributed among them.
+The first process will be in charge of distributing parts of the image to the other
+processes, and it will also assemble the whole picture in the end.
+
+The following filters can be applied, and must be passed as arguments to the program:
+smooth, blur, sharpen, mean, or emboss.
+
+Building the executable:
+	make
+
+Executing the program:
+	mpirun -np <number of processes> ./imgFilter <path to input picture> <path to output picture> <filter1> <filter2> ... <filterN>
+
+The makefile also contains an execution example.
